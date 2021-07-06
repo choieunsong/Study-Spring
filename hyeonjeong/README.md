@@ -22,9 +22,9 @@
 
 | 챕터  | 강의명               | 수강여부 |
 | ----- | -------------------- | -------- |
-| chap1 | REST API             |          |
-|       | Event REST API       |          |
-|       | Postman & Restlet    |          |
+| chap1 | REST API             | O        |
+|       | Event REST API       | O        |
+|       | Postman & Restlet    | O        |
 |       | Project 만들기       |          |
 |       | 이벤트 도메인 구현   |          |
 |       | 이벤트 비즈니스 로직 |          |
