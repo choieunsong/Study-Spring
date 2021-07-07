@@ -47,3 +47,31 @@
 ## HATEOAS 해결 방법
 1. **HAL을 이용해 데이터에 링크 제공!!**
 2. 링크 헤더나 location 제공 
+
+* HAL(Hypertext Application Language)
+  * HAL은 API 리소스 사이를 하이퍼링크 위한 쉽고 지속적인 방법 제공
+  
+
+-----
+# "Event" REST API
+## GET/api/events
+* 이벤트 목록 조회 REST API
+  * 로그인 안 한 상태와 로그인 한 상태 구분해야 함
+    * 이벤트 목록
+    * 링크
+      * self
+      * profile
+      * get-an-event
+      * next
+      * prev
+  * 로그인 했을 땐 create-new-event 추가: 이벤트 생성할 수 있는 API 링크
+
+## POST/api/events
+* 이벤트 생성
+
+## GET/api/events/{id}
+* 이벤트 하나 조회
+
+## PUT/api/events/{id}
+* 이벤트 수정
+  
