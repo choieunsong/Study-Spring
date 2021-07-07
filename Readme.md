@@ -4,7 +4,7 @@
 ### 인증하기 
 |참여자|chap1|chap2|chap3|chap4|chap5|chap6|
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-|은송| :white_large_square: | :white_large_square:| :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
+|은송| :white_check_mark: | :white_large_square:| :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
 |현정| :white_large_square: | :white_large_square:| :white_large_square: | :white_large_square:|:white_large_square: |:white_large_square: |
 
 ---
