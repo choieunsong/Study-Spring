@@ -18,6 +18,10 @@
 
 
 
+### [프로젝트 링크](https://github.com/dlguswjd0258/rest-api-with-spring)
+
+
+
 ### 진도
 
 | 챕터  | 강의명               | 수강여부 |
@@ -25,10 +29,9 @@
 | chap1 | REST API             | O        |
 |       | Event REST API       | O        |
 |       | Postman & Restlet    | O        |
-|       | Project 만들기       |          |
-|       | 이벤트 도메인 구현   |          |
+|       | Project 만들기       | O        |
+|       | 이벤트 도메인 구현   | O        |
 |       | 이벤트 비즈니스 로직 |          |
 | chap2 |                      |          |
-
 
 
