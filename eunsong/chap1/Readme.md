@@ -1,4 +1,5 @@
 # Chap 1 - REST API 및 프로젝트 소개 
+# [프로젝트 링크](https://github.com/choieunsong/demo-inflearn-rest-api.git)
 
 ## REST API라 불리기 위한 조건
 - Self-Descriptive Message
