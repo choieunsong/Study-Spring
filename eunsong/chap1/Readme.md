@@ -75,3 +75,43 @@
 ## PUT/api/events/{id}
 * 이벤트 수정
   
+---
+## 롬복이란(lombok)?
+  * getter, setter를 annotation 설정으로 적용할 수 있는 라이브러리
+```java
+@Data
+public class Student {
+    private int id;
+    private String name;
+    private int grade;
+    private String department;
+}
+ ```
+
+### Event Test 만들기
++ Event 클래스에서 command + shift + T (맥기준) 하면 test 폴더 밑에 자동으로 EventTest 파일 생성
++ EventTest에 lombok의 @Test 어노테이션 붙이기, Event에 @Builder 어노테이션 붙이기 => 컴파일 시 자동으로 getter, setter, constructor 만들어줌
+
+```java
+class EventTest {
+    @Test
+    public void builder(){
+        Event event = Event.builder()
+                .name("Inflearn Spring Rest Api")
+                .description("REST API development with Spring")
+                .build();
+        assertThat(event).isNotNull();
+    }
+}
+  ```
+
+
+### @Builder @AllArgsConstructor를 쓰는 이유?
++ builder로 빌드하면 모든 인자가 포함된 생성자 만듬. 기본 생성자 만들어주기 위해
+
+### Q. 너무 긴데 애노테이션 못줄이나?
+A. 롬복은 메타 애노테이션을 지원 안함
+
+### AssertThat
++ junit 테스트에서 제공하는 assertions 작성에 도움되는 자바 라이브러리
++ `assertThat(actual).isEqualTo(expect)`
