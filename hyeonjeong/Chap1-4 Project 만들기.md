@@ -1,6 +1,6 @@
 # Chap1-4 ~ 6 Project 만들기
 
-### :one: Spring Boot project 생성
+## :one: Spring Boot project 생성
 
 - JAVA 버전은 8이 깔려있어서 8로 사용했음.
 - 추가한 의존성
@@ -17,7 +17,6 @@
     - 인메모리가 아닌 DB 의존성
   - Lombok
     - Lombok 사용시 다운 받고 설정 필요
-    - 설정법
 - @EnableAutoConfiguration : 자동 설정
 
 
@@ -59,18 +58,17 @@
    ![image-20210707202315042](img\image-20210707202315042.png)
 
    ![image-20210707202431057](\img\image-20210707202431057.png)
+   
+   
 
+## :two: Event 도메인 구현
 
-
-### :two: Event 도메인 구현
-
-- Event Class 생성
+- #### Event Class 생성
 
   ```java
   @Builder @AllArgsConstructor @NoArgsConstructor
   @Getter @Setter @EqualsAndHashCode(of = "id")
   public class Event {
-  	
   	private Integer id;
   	private String name;
   	private String description;
@@ -85,7 +83,6 @@
   	private boolean offline;
   	private boolean free;
   	private EventStatus eventStatus;
-  	
   }
   ```
 
@@ -101,7 +98,15 @@
     - 객체 간의 상호 참조하는 연관 관계라면 Equals와 HashCode를 구현한 코드 안에서 스택 오버플로우가 발생할 수 있으므로 id로만 Equals와 HashCode를 비교하도록 사용
     - 즉, Equals와 HashCode를 id만 사용하라는 의미  
 
-- Test class 만들기
+  
+
+  :exclamation: p.s. Spring이 제공해주는 Annotation은 Custom Annotation 만들 수 있자먼 lombok은 불가능
+
+  :exclamation: p.s. @Data 사용은 @EqualsAndHashCode 때문에 비권장
+
+  
+
+- #### Test class 만들기
 
   - test/java에 Event와 같은 package로 EventTest class 생성
 
@@ -116,10 +121,23 @@
     			.build();
     	assertThat(event);
     }
-    	
+    
+    @Test
+    public void javaBean() {
+    	// Given
+    	String name = "Event";
+    	String description = "Spring";
+    
+    	// When
+    	Event event = new Event();
+    	event.setName(name);
+    	event.setDescription(description);
+    
+    	// Then
+    	assertThat(event.getName()).isEqualTo(name);
+    	assertThat(event.getDescription()).isEqualTo(description);
+    }
     ```
-
-
 
 
 
@@ -136,7 +154,49 @@
 
       ![image-20210707223433110](\img\image-20210707223433110.png)
 
-- 
-
   
+
+
+
+## :three: Event 비즈니스 로직 : Event 생성 API 구현
+
+### 입력값
+
+| 변수명                  | 설명                                  |
+| ----------------------- | ------------------------------------- |
+| name                    | 이벤트 이름                           |
+| description             | 이벤트 설명                           |
+| beginEnrollmentDateTime | 이벤트 등록 시작 시간                 |
+| closeEnrollmentDateTime | 이벤트 등록 종료 시간                 |
+| beginEventDateTime      | 이벤트 시작 일시                      |
+| endEventDateTime        | 이벤트 종료 일시                      |
+| location (optional)     | 이벤트 위치 (이게 없으면 온라인 모임) |
+| basePrice (optional)    | 등록비                                |
+| maxPrice (optional)     | 등록비                                |
+| limitOfEnrollment       | 등록 제한 인원수                      |
+
+- basePrice와 maxPrice
+
+  | basePrice | maxPrice | 설명                                                         |
+  | --------- | -------- | ------------------------------------------------------------ |
+  | 0         | 100      | 선착순 등록                                                  |
+  | 0         | 0        | 무료                                                         |
+  | 100       | 0        | 무제한 경매 (높은 금액 낸 사람이 등록)                       |
+  | 100       | 200      | 제한가 선착순 등록<br>처음부터 200을 낸 사람은 선 등록.<br>100을 내고 등록할 수 있으나 더 많이 낸 사람에 의해 밀려날 수 있음. |
+
+
+
+### 결과값
+
+- id 
+- name 
+- ... 
+- **eventStatus: DRAFT**, PUBLISHED, ENROLLMENT_STARTED, ...
+- offline
+-  free
+- _links 
+  - profile (for the self-descriptive message)
+  - self 
+  - publish 
+  - ... 
 
