@@ -37,7 +37,7 @@
 |                                                   | 이벤트 Repository                        | O        |
 |                                                   | 입력값 제한하기                          | O        |
 |                                                   | 입력값 이외에 에러 발생                  | O        |
-|                                                   | Bad Request 처리                         |          |
+|                                                   | Bad Request 처리                         | O        |
 |                                                   | Bad Request 응답                         |          |
 |                                                   | 비즈니스 로직 적용                       |          |
 |                                                   | 매개변수를 이용한 테스트                 |          |
